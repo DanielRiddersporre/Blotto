@@ -7,7 +7,7 @@ function App() {
       <div className='flex flex-col bg-violet-200 h-full w-full overflow-hidden'>
         <div className='flex p-3 items-start bg-violet-950'>
           <div className='min-w-[35%]'>
-            <button className='text-white font-bold rounded-md bg-violet-500 p-2'>Skapa Bingo</button>
+            <button className='text-white font-bold rounded-md bg-violet-500 p-2 active:bg-violet-400'>Skapa Bingo</button>
           </div>
           <div className="flex overflow-x-auto space-x-3 no-scrollbar">
             {/*Make this part horizontally scrollable and buttons should be added dynamically */}

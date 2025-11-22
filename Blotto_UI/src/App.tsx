@@ -20,19 +20,9 @@ function App() {
             <button className='text-white font-bold rounded-md bg-violet-500 p-2 w-10 flex-shrink-0'>7</button>
           </div>
         </div>
-        <div className='flex-1 p-2'>
+        <div className='flex flex-1 justify-center items-center'>
           {/*This part is for the bingo card and it should be added dynamically*/}
-          <p className=''>TESTAR</p>
-          <p className=''>TESTAR</p>
-          <p className=''>TESTAR</p>
-          <p className=''>TESTAR</p>
-          <p className=''>TESTAR</p>
-          <p className=''>TESTAR</p>
-          <p className=''>TESTAR</p>
-          <p className=''>TESTAR</p>
-          <p className=''>TESTAR</p>
-          <p className=''>TESTAR</p>
-          <p className=''>TESTAR</p>
+          <p>Skapa en ny bingobricka för att börja spela!</p>
         </div>
       </div>
     </>

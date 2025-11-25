@@ -1,28 +1,48 @@
+import { useState } from 'react'
 import './App.css'
 
 function App() {
+  const [bingoCards, setBingoCards] = useState<number[][]>([])
+  const [currentIndex, setCurrentIndex] = useState<number | null>(null)
+
+  const createBingoCard = () => {
+    const newBingo = Array.from({length: 5}, () =>
+      Math.floor(Math.random() * 75) + 1
+    )
+    setBingoCards(prev => [...prev, newBingo])
+    setCurrentIndex(bingoCards.length)
+  }
 
   return (
     <>
       <div className='flex flex-col bg-violet-200 h-full w-full overflow-hidden'>
         <div className='flex p-3 items-start bg-violet-950'>
           <div className='min-w-[35%]'>
-            <button className='text-white font-bold rounded-md bg-violet-500 p-2 active:bg-violet-400'>Skapa Bingo</button>
+            <button className='text-white font-bold rounded-md bg-violet-500 p-2 active:bg-violet-400' onClick={createBingoCard}>Skapa Bingo</button>
           </div>
           <div className="flex overflow-x-auto space-x-3 no-scrollbar">
-            {/*Make this part horizontally scrollable and buttons should be added dynamically */}
-            <button className='text-white font-bold rounded-md bg-violet-500 p-2 w-10 flex-shrink-0'>1</button>
-            <button className='text-white font-bold rounded-md bg-violet-500 p-2 w-10 flex-shrink-0'>2</button>
-            <button className='text-white font-bold rounded-md bg-violet-500 p-2 w-10 flex-shrink-0'>3</button>
-            <button className='text-white font-bold rounded-md bg-violet-500 p-2 w-10 flex-shrink-0'>4</button>
-            <button className='text-white font-bold rounded-md bg-violet-500 p-2 w-10 flex-shrink-0'>5</button>
-            <button className='text-white font-bold rounded-md bg-violet-500 p-2 w-10 flex-shrink-0'>6</button>
-            <button className='text-white font-bold rounded-md bg-violet-500 p-2 w-10 flex-shrink-0'>7</button>
+            {bingoCards.map((_, index) => ( 
+              <button
+                key={index}
+                className={`text-white font-bold rounded-md bg-violet-500 p-2 w-10 flex-shrink-0
+                  ${currentIndex === index ? 'bg-violet-700' : ''}`}
+                onClick={() => setCurrentIndex(index)}
+              >
+                {index+1}
+              </button>
+            ))}
           </div>
         </div>
         <div className='flex flex-1 justify-center items-center'>
-          {/*This part is for the bingo card and it should be added dynamically*/}
-          <p>Skapa en ny bingobricka för att börja spela!</p>
+          {currentIndex !== null ? (
+            <div>
+              {/* Här kan du rendera din Bingo-komponent senare */}
+              <p>Bingobricka #{currentIndex + 1}:</p>
+              <p>{bingoCards[currentIndex].join(', ')}</p>
+            </div>
+          ) : (
+            <p>Skapa en ny bingobricka för att börja spela!</p>
+          )}
         </div>
       </div>
     </>
